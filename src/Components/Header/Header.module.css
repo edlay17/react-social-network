@@ -1,0 +1,10 @@
+header{
+    height: 80px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+header img{
+    float: left;
+}
+

@@ -1,0 +1,32 @@
+.userInfo{
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 150px 1fr;
+    grid-template-areas: "userPhoto userDescription";
+}
+
+.userInfo .userPhoto{
+    grid-area: userPhoto;
+    margin-left: 20px;
+}
+
+.userInfo .userDescription{
+    grid-area: userDescription;
+    padding-left: 25px;
+}
+
+.userInfo .userDescription h2{
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.userInfo .userDescription ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.userInfo .userDescription ul li span{
+    font-weight: bold;
+}

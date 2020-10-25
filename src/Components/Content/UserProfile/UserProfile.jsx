@@ -16,12 +16,16 @@ function UserProfile() {
                         <li><span>Exp:</span> HTML, CSS, JS, ReactJs, PHP, Wordpress, SQL, GIT.</li>
                         <li>Date of Birth: </li>
                         <li>Date of Birth: </li>
-                        <li>Date of Birth: </li>
+                        <li className='test'>Date of Birth: </li>
                     </ul>
                 </div>
             </div>
             <div className='userPosts'>
-                <div className='userAddPost'></div>
+                <h2 className='posts-title'>My posts</h2>
+                <div className='userAddPost'>
+                    <textarea name="comment"></textarea>
+                    <a className='button'>Add</a>
+                </div>
                 <div className='userPost'></div>
             </div>
         </div>

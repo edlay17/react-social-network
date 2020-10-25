@@ -1,0 +1,18 @@
+.addPost{
+    text-align: right;
+}
+
+h3.addPost{
+    margin-left: 20px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.addPost textarea {
+    margin: 10px 20px;
+    width: calc(100% - 60px);
+    height: 150px;
+    resize: none;
+    padding: 5px 10px;
+    font-size: 18px;
+}
