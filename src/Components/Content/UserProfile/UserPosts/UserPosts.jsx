@@ -1,12 +1,18 @@
-import React from "react"
-import ProfileAddPost from "./ProfileAddPost"
+import React from "react";
+import s from "./UserPosts.module.css";
+import UserAddPost from "./AddPost/UserAddPost";
+import UserPost from "./Post/UserPost";
 
-function UserPosts() {
+function UserPosts(props) {
+    let postData = props.postData;
+    let postDataConvert = postData.map((post) => <UserPost profileAvatar={props.profileAvatar} message={post.message} likesCount={post.likesCount}/>)
+
     return (
-        <div className='userPosts'>
-            <h2 className='posts-title'>My posts</h2>
-            <ProfileAddPost/>
-            <div className='userPost'></div>
+        <div>
+            <UserAddPost newPostText={props.newPostText} dispatch={props.dispatch}/>
+            <div className={s.posts}>
+                {postDataConvert.reverse()}
+            </div>
         </div>
     );
 }

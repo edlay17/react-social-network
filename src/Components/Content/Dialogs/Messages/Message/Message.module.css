@@ -1,0 +1,22 @@
+.itemFrom{
+    margin: 5px 30px;
+    max-width: 70%;
+    background-color: azure;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.itemTo{
+    margin: 5px 30px;
+    max-width: 70%;
+    background-color: cornsilk;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.alignRight{
+    text-align: right;
+}

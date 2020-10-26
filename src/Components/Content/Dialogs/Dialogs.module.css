@@ -1,0 +1,11 @@
+.dialogs h1{
+    margin: 15px 10px 25px 20px;
+}
+
+.content{
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    max-height: 100%;
+}
+
+

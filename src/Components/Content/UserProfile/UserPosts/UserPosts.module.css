@@ -1,3 +1,9 @@
-.userPosts .posts-title{
+.title{
     margin-left: 20px;
+}
+
+.posts{
+    /*border-top: 1px solid #def1f2;
+    margin-top: 15px;*/
+    padding-top: 15px;
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import "./CSS/Footer.module.css";
+import s from "./Footer.module.css";
 
-function Footer() {
+function Footer(props) {
     return (
         <footer>
-            edlayweb@gmail.com
+            {props.footer.footerCopyright}
         </footer>
     );
 }

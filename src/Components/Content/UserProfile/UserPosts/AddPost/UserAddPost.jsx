@@ -1,15 +1,28 @@
 import React from "react";
-import "./ProfileAddPost.css";
+import s from "./UserAddPost.module.css";
+import {postTextareaChangeActionCreator, addPostActionCreator} from "../../../../../redux/profileReducer";
 
-function ProfileAddPost() {
+
+
+function UserAddPost(props) {
+
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        props.dispatch(addPostActionCreator());
+    }
+    let textareaChange = () => {
+        let text = newPostElement.current.value;
+        props.dispatch(postTextareaChangeActionCreator(text));
+    }
+
     return (
-        <div className='userAddPost'>
-            <h3 className='posts-title'>New post</h3>
-            <textarea name="comment"></textarea>
-            <button>Add</button>
+        <div className={s.addPost}>
+            <h3>New post</h3>
+            <textarea placeholder="enter your message..." value={props.newPostText} onChange={textareaChange} ref={newPostElement} />
+            <button onClick={addPost}>Add</button>
         </div>
     );
 }
 
-export default ProfileAddPost;
+export default UserAddPost;
 

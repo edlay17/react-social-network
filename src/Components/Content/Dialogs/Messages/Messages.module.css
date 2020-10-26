@@ -1,0 +1,14 @@
+.messages textarea {
+    margin: 30px 20px 10px 20px;
+    width: calc(100% - 60px);
+    height: 100px;
+    resize: none;
+    padding: 5px 10px;
+    font-size: 17px;
+    outline: none;
+    border: 1px solid #dbe0e2;
+}
+
+.button{
+    text-align: right;
+}

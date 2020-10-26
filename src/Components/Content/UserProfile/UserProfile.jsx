@@ -1,33 +1,15 @@
-import React from "react";
+import React from "react"
+import s from "./UserProfile.module.css"
+import UserPosts from "./UserPosts/UserPosts";
+import UserHeader from "./UserHeader/UserHeader";
+import UserInfo from "./UserInfo/UserInfo";
 
-function UserProfile() {
+function UserProfile(props) {
     return (
-        <div className='userProfile'>
-            <div className='headImage'>
-                <img src='https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg' />
-            </div>
-            <div className='userInfo'>
-                <div className='userPhoto'>
-                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOfqBBnGW-ntm2BhRJQQJupmw5Gh5drIDnvA&usqp=CAU'/>
-                </div>
-                <div className='userDescription'>
-                    <h2>Dmitry Ivanov</h2>
-                    <ul>
-                        <li><span>Exp:</span> HTML, CSS, JS, ReactJs, PHP, Wordpress, SQL, GIT.</li>
-                        <li>Date of Birth: </li>
-                        <li>Date of Birth: </li>
-                        <li className='test'>Date of Birth: </li>
-                    </ul>
-                </div>
-            </div>
-            <div className='userPosts'>
-                <h2 className='posts-title'>My posts</h2>
-                <div className='userAddPost'>
-                    <textarea name="comment"></textarea>
-                    <a className='button'>Add</a>
-                </div>
-                <div className='userPost'></div>
-            </div>
+        <div>
+            <UserHeader profileHeader={props.profile.profileHeader}/>
+            <UserInfo profileAvatar={props.profile.profileAvatar} profileName={props.profile.profileName} profileInfoData={props.profile.profileInfoData}/>
+            <UserPosts profileAvatar={props.profile.profileAvatar} postData={props.profile.postData} newPostText={props.profile.newPostText} dispatch={props.dispatch}/>
         </div>
     );
 }

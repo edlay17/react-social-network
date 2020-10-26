@@ -1,22 +1,13 @@
-import React from "react";
-import "./CSS/Sidebar.module.css"
+import React from "react"
+import s from "./Sidebar.module.css"
+import {NavLink} from "react-router-dom";
+import SidebarMenu from "./SidebarMenu/SidebarMenu";
 
-function Sidebar() {
+function Sidebar(props) {
+
     return (
         <aside>
-            <nav>
-                <ul>
-                    <li>
-                        <a className='active' href='#'>Profile</a>
-                    </li>
-                    <li>
-                        <a href='#'>Messages</a>
-                    </li>
-                    <li>
-                        <a href='#'>Settings</a>
-                    </li>
-                </ul>
-            </nav>
+            <SidebarMenu menuItems={props.sidebar.sidebarMenu}/>
         </aside>
     );
 }
