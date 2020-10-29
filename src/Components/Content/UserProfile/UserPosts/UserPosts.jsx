@@ -1,15 +1,16 @@
 import React from "react";
 import s from "./UserPosts.module.css";
-import UserAddPost from "./AddPost/UserAddPost";
 import UserPost from "./Post/UserPost";
+import UserAddPostContainer from "./AddPost/UserAddPostContainer";
+
 
 function UserPosts(props) {
-    let postData = props.postData;
-    let postDataConvert = postData.map((post) => <UserPost profileAvatar={props.profileAvatar} message={post.message} likesCount={post.likesCount}/>)
+    let postData = props.store.getState().profile.postData;
+    let postDataConvert = postData.map((post) => <UserPost profileAvatar={props.store.getState().profile.profileAvatar} message={post.message} likesCount={post.likesCount}/>)
 
     return (
         <div>
-            <UserAddPost newPostText={props.newPostText} dispatch={props.dispatch}/>
+            <UserAddPostContainer store={props.store}/>
             <div className={s.posts}>
                 {postDataConvert.reverse()}
             </div>

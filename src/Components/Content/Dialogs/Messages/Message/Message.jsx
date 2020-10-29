@@ -11,7 +11,7 @@ function Message(props) {
                 </div>
         );
     }
-    else{
+    else if(!props.inbox){
         return (
             <div className={s.alignRight}>
                 <div className={s.itemTo}>

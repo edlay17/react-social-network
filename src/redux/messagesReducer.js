@@ -28,22 +28,22 @@ let InitialState = {
 
 
 const messagesReducer = (state = InitialState, action) => {
+    let copyState = {...state};
     if(action.type === CHANGE_MESSAGE_TEXTAREA){
-        state.newMessageText = action.text;
-        //this.callSubscriber(this.getState());
+        copyState.newMessageText = action.text;
     }
     else if(action.type === ADD_MESSAGE){
-        if(state.newMessageText != ''){
+        if(copyState.newMessageText != ''){
             let newMessage = {
                 inbox: false,
-                text: state.newMessageText
+                text: copyState.newMessageText
             }
-            state.messagesData.push(newMessage);
-            state.newMessageText = '';
-            //this.callSubscriber(this.getState());
+            copyState.messagesData = [...state.messagesData];
+            copyState.messagesData.push(newMessage);
+            copyState.newMessageText = '';
         }
     }
-    return state;
+    return copyState;
 }
 
 export default messagesReducer;

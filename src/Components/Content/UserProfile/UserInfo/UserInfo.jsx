@@ -1,9 +1,8 @@
 import React from "react"
 import s from "./UserInfo.module.css"
-import UserPost from "../UserPosts/Post/UserPost";
 import UserInfoItem from "./UserInfoItem/UserInfoItem";
 
-function UserProfile(props) {
+function UserInfo(props) {
     let infoData = props.profileInfoData;
     let infoDataConvert = infoData.map((description) => <UserInfoItem infoItemName={description.descItemName} infoItem={description.descItem}/>);
 
@@ -22,5 +21,5 @@ function UserProfile(props) {
     );
 }
 
-export default UserProfile;
+export default UserInfo;
 

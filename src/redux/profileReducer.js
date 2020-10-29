@@ -24,23 +24,23 @@ let InitialState = {
 }
 
 export const profileReducer = (state = InitialState, action) => {
+    let copyState = {...state};
     if(action.type === CHANGE_POST_TEXTAREA){
-        state.newPostText = action.text;
-        //this.callSubscriber(this.getState());
+        copyState.newPostText = action.text;
     }
     else if(action.type === ADD_POST){
-        if(state.newPostText != ''){
+        if(copyState.newPostText != ''){
             let newPost = {
                 id: 5,
-                message: state.newPostText,
+                message: copyState.newPostText,
                 likesCount: 1,
             }
-            state.postData.push(newPost);
+            copyState.postData = [...state.postData];
+            copyState.postData.push(newPost);
             state.newPostText = '';
-            //this.callSubscriber(this.getState());
         }
     }
-    return state;
+    return copyState;
 }
 
 export default profileReducer;

@@ -7,9 +7,9 @@ import UserInfo from "./UserInfo/UserInfo";
 function UserProfile(props) {
     return (
         <div>
-            <UserHeader profileHeader={props.profile.profileHeader}/>
-            <UserInfo profileAvatar={props.profile.profileAvatar} profileName={props.profile.profileName} profileInfoData={props.profile.profileInfoData}/>
-            <UserPosts profileAvatar={props.profile.profileAvatar} postData={props.profile.postData} newPostText={props.profile.newPostText} dispatch={props.dispatch}/>
+            <UserHeader profileHeader={props.profileHeader}/>
+            <UserInfo profileInfoData={props.profileInfoData} profileAvatar={props.profileAvatar} profileName={props.profileName}/>
+            <UserPosts store={props.store}/>
         </div>
     );
 }

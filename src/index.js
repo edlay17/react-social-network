@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/reduxStore';
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
 
-
-export let renderAll = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <BrowserRouter>
+                <Provider store={store}>
+                    <App state={store.getState()} store={store} dispatch={store.dispatch.bind(store)}/>
+                </Provider>
+            </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
@@ -18,10 +22,3 @@ export let renderAll = (state) => {
     // unregister() to register() below. Note this comes with some pitfalls.
     // Learn more about service workers: https://bit.ly/CRA-PWA
     serviceWorker.unregister();
-}
-
-renderAll(store.getState());
-store.subscribe(() => {
-    let state = store.getState();
-    renderAll(state);
-});

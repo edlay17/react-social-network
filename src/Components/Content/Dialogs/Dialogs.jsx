@@ -1,7 +1,7 @@
 import React from "react"
 import s from "./Dialogs.module.css"
 import Contacts from "./Contacts/Contacts";
-import Messages from "./Messages/Messages";
+import MessagesContainer from "./Messages/MessagesContainer";
 
 
 function Dialogs(props) {
@@ -10,7 +10,7 @@ function Dialogs(props) {
             <h1>Dialogs</h1>
             <div className={s.content}>
                 <Contacts contacts={props.messages.contactsData}/>
-                <Messages messages={props.messages.messagesData} newMessageText={props.messages.newMessageText} dispatch={props.dispatch}/>
+                <MessagesContainer store={props.store}/>
             </div>
         </div>
     );
