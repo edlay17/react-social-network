@@ -1,10 +1,10 @@
 let InitialState = {
     sidebarMenu: [
-        {name: 'Profile', route: '/profile'},
-        {name: 'Messages', route: '/dialogs'},
-        {name: 'News', route: '/news'},
-        {name: 'Settings', route: '/settings'},
-        {name: 'test', route: '/test'},
+        {id: 1, name: 'Profile', route: '/profile'},
+        {id: 2, name: 'Messages', route: '/dialogs'},
+        {id: 3, name: 'News', route: '/news'},
+        {id: 4, name: 'Settings', route: '/settings'},
+        {id: 5, name: 'test', route: '/test'},
     ]
 }
 

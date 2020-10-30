@@ -12,8 +12,8 @@ let InitialState = {
     profileAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOfqBBnGW-ntm2BhRJQQJupmw5Gh5drIDnvA&usqp=CAU',
     profileHeader: 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
     profileInfoData: [
-        {descItemName:'Exp', descItem:'HTML, CSS, JS, ReactJs, VueJs, PHP, Wordpress, SQL, GIT.'},
-        {descItemName:'Last visit', descItem:'11:09 01.01.1970'}
+        {id: 1, descItemName:'Exp', descItem:'HTML, CSS, JS, ReactJs, VueJs, PHP, Wordpress, SQL, GIT.'},
+        {id: 2, descItemName:'Last visit', descItem:'11:09 01.01.1970'}
     ],
     newPostText: '',
     postData: [
@@ -24,23 +24,25 @@ let InitialState = {
 }
 
 export const profileReducer = (state = InitialState, action) => {
-    let copyState = {...state};
+    let stateCopy = {
+            ...state,
+            postData: [...state.postData]
+    };
     if(action.type === CHANGE_POST_TEXTAREA){
-        copyState.newPostText = action.text;
+        stateCopy.newPostText = action.text;
     }
     else if(action.type === ADD_POST){
-        if(copyState.newPostText != ''){
+        if(stateCopy.newPostText != ''){
             let newPost = {
                 id: 5,
-                message: copyState.newPostText,
-                likesCount: 1,
+                message: stateCopy.newPostText,
+                likesCount: 0,
             }
-            copyState.postData = [...state.postData];
-            copyState.postData.push(newPost);
-            state.newPostText = '';
+            stateCopy.postData.push(newPost);
+            stateCopy.newPostText = '';
         }
     }
-    return copyState;
+    return stateCopy;
 }
 
 export default profileReducer;

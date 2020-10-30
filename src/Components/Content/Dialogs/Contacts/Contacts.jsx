@@ -5,7 +5,7 @@ import Contact from "./Contact/Contact";
 function Contacts(props) {
     let contactsDataConvert = props.contacts.map((contact) =>
         <div className={s.list}>
-            <Contact name={contact.name} id={contact.id}/>
+            <Contact name={contact.name} id={contact.id} key={contact.id}/>
         </div>
     )
 

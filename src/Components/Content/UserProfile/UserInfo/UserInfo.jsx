@@ -4,7 +4,7 @@ import UserInfoItem from "./UserInfoItem/UserInfoItem";
 
 function UserInfo(props) {
     let infoData = props.profileInfoData;
-    let infoDataConvert = infoData.map((description) => <UserInfoItem infoItemName={description.descItemName} infoItem={description.descItem}/>);
+    let infoDataConvert = infoData.map((description) => <UserInfoItem infoItemName={description.descItemName} infoItem={description.descItem} key={description.id}/>);
 
     return (
         <div className={s.info}>

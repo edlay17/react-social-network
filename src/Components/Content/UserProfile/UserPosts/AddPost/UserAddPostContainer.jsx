@@ -1,11 +1,11 @@
 import React from "react";
-import s from "./UserAddPost.module.css";
 import {postTextareaChangeActionCreator, addPostActionCreator} from "../../../../../redux/profileReducer";
 import UserAddPost from "./UserAddPost";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
     return{
+        postData: state.profile.postData,
         newPostText: state.profile.newPostText
     }
 }

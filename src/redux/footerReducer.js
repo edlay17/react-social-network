@@ -3,8 +3,8 @@ let InitialState = {
 };
 
 const footerReducer = (state = InitialState, action) => {
-
-    return state;
+    let copyState = {...state};
+    return copyState;
 }
 
 export default footerReducer;

@@ -6,3 +6,8 @@ footer{
     color: #90949c;
 }
 
+@media screen and (max-width: 1240px) {
+    footer {
+        margin-top: 20px;
+    }
+}

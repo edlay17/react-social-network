@@ -4,7 +4,7 @@ import Message from "./Message/Message";
 
 function Messages(props) {
     let message = React.createRef();
-    let messagesDataConvert = props.messagesData.map((message) => <Message inbox={message.inbox} message={message.text}/>);
+    let messagesDataConvert = props.messagesData.map((message) => <Message inbox={message.inbox} message={message.text} key={message.id}/>);
     let onMessageTextAreaChanged = () => {
         let text = message.current.value;
         props.messageTextAreaChanged(text);

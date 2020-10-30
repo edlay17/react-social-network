@@ -1,6 +1,5 @@
 import React from "react";
-import {postTextareaChangeActionCreator, addPostActionCreator} from "../../../../../redux/profileReducer";
-import UserAddPost from "./UserAddPost";
+import UserPosts from "./UserPosts";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
@@ -11,15 +10,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return{
-        addPost: () => {
-            dispatch(addPostActionCreator());
-            },
-        textareaChange: (text) => {
-            dispatch(postTextareaChangeActionCreator(text));
-        }
     }
 }
 
-const UserAddPostContainer = connect(mapStateToProps, mapDispatchToProps)(UserAddPost);
-export default UserAddPostContainer;
+const UserPostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserPosts);
+export default UserPostsContainer;
 

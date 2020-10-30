@@ -3,7 +3,8 @@ let InitialState = {
 };
 
 const headerReducer = (state = InitialState, action) => {
-    return state;
+    let copyState = {...state};
+    return copyState;
 }
 
 export default headerReducer;

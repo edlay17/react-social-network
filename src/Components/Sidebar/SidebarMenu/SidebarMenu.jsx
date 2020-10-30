@@ -6,7 +6,7 @@ function SidebarMenu(props) {
     //debugger;
     let menuItems = props.menuItems;
     let sidebarMenu = menuItems.map((elem) => {
-        return <li><NavLink activeClassName={s.active} to={elem.route}>{elem.name}</NavLink></li>
+        return <li key={elem.id}><NavLink activeClassName={s.active} to={elem.route}>{elem.name}</NavLink></li>
     })
 
     return (
