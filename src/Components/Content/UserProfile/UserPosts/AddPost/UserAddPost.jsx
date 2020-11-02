@@ -16,7 +16,7 @@ function UserAddPost(props) {
         <div className={s.addPost}>
             <h3>New post</h3>
             <textarea placeholder="enter your message..." value={props.newPostText} onChange={onTextareaChange} ref={newPostElement} />
-            <button onClick={onAddPost}>Add</button>
+            <button className={s.button} onClick={onAddPost}>Add</button>
         </div>
     );
 }

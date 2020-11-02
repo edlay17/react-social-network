@@ -38,8 +38,7 @@ const messagesReducer = (state = InitialState, action) => {
                 inbox: false,
                 text: stateCopy.newMessageText
             }
-            stateCopy.messagesData = [...state.messagesData];
-            stateCopy.messagesData.push(newMessage);
+            stateCopy.messagesData = [...state.messagesData, newMessage];
             stateCopy.newMessageText = '';
         }
     }

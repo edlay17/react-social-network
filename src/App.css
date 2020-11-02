@@ -7,7 +7,7 @@ form, textarea, button, input{
 }
 
 button{
-  padding: 8px 25px;
+  padding: 8px 27px;
   margin: 5px 20px 10px 20px;
   border: 0;
   font-size: 16px;
@@ -16,7 +16,6 @@ button{
 
 button:hover{
   transition: 0.3s;
-  padding: 8px 27px;
   background-color: lightblue;
 }
 

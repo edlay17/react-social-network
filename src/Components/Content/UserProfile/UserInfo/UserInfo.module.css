@@ -11,6 +11,13 @@
     margin-left: 20px;
 }
 
+.photo img{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
 .description{
     grid-area: userDescription;
     padding-left: 25px;

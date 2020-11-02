@@ -1,5 +1,8 @@
+
+
 let InitialState = {
-    headerLogo: 'https://i.pinimg.com/originals/33/b8/69/33b869f90619e81763dbf1fccc896d8d.jpg'
+    headerLogo: 'https://library.kissclipart.com/20191103/ueq/kissclipart-js-icon-logo-icon-react-icon-174d1b3209c3edf6.png'
+    //headerLogo: '././logo.svg'
 };
 
 const headerReducer = (state = InitialState, action) => {

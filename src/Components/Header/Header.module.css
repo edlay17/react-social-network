@@ -2,14 +2,45 @@ header{
     height: 80px;
     margin-bottom: 30px;
     background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
 header img{
     float: left;
+    margin-left: 20px;
+    height: 80%;
+    margin-top: 8px;
+    filter: opacity(30%);
+}
+
+.menu{
+    display: none;
 }
 
 @media screen and (max-width: 1240px) {
     header{
         margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .menu{
+        display: block;
+        min-width: 70px;
+        background-color: #f7f8fa;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .hamburgerLine{
+        width: 75%;
+        height: 7px;
+        background-color: #90a7ac;
+        border-radius: 4px;
     }
 }

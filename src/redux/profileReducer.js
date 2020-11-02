@@ -9,8 +9,8 @@ export const postTextareaChangeActionCreator = (text) => ({
 
 let InitialState = {
     profileName: 'Ivan Ivanov',
-    profileAvatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOfqBBnGW-ntm2BhRJQQJupmw5Gh5drIDnvA&usqp=CAU',
-    profileHeader: 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
+    profileAvatar: 'https://uploads.hb.cldmail.ru/geekbrains/public/ckeditor_assets/pictures/6933/content-dc09a3cb592ac82b7ce0522a7e7eb882.png',
+    profileHeader: 'https://www.paragyte.com/img/React_Banner.png',
     profileInfoData: [
         {id: 1, descItemName:'Exp', descItem:'HTML, CSS, JS, ReactJs, VueJs, PHP, Wordpress, SQL, GIT.'},
         {id: 2, descItemName:'Last visit', descItem:'11:09 01.01.1970'}
@@ -24,10 +24,7 @@ let InitialState = {
 }
 
 export const profileReducer = (state = InitialState, action) => {
-    let stateCopy = {
-            ...state,
-            postData: [...state.postData]
-    };
+    let stateCopy = {...state};
     if(action.type === CHANGE_POST_TEXTAREA){
         stateCopy.newPostText = action.text;
     }
@@ -38,7 +35,8 @@ export const profileReducer = (state = InitialState, action) => {
                 message: stateCopy.newPostText,
                 likesCount: 0,
             }
-            stateCopy.postData.push(newPost);
+
+            stateCopy.postData = [...state.postData, newPost];
             stateCopy.newPostText = '';
         }
     }

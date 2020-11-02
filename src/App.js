@@ -2,13 +2,13 @@ import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import Sidebar from "./Components/Sidebar/Sidebar";
-//import UserProfile from "./Components/Content/UserProfile/UserProfile";
 import Footer from "./Components/Footer/Footer";
 import Dialogs from "./Components/Content/Dialogs/Dialogs";
 import News from "./Components/Content/News/News";
 import Settings from "./Components/Content/Settings/Settings";
 import {BrowserRouter, Route} from "react-router-dom";
 import UserProfileContainer from "./Components/Content/UserProfile/UserProfileContainer";
+import AllUsersContainer from "./Components/Content/AllUsers/AllUsersContainer";
 
 function App(props) {
   return (
@@ -19,6 +19,7 @@ function App(props) {
                 <div className='mainContent'>
                     <Route exact path="/profile" render={ () => <UserProfileContainer store={props.store}/> }/>
                     <Route path="/dialogs" render={ () => <Dialogs messages={props.state.messages} store={props.store}/> }/>
+                    <Route path="/users" render={ () => <AllUsersContainer store={props.store}/> }/>
                     <Route path="/news" render={ () => <News/> }/>
                     <Route path="/settings" render={ () => <Settings/> }/>
                 </div>

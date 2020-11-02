@@ -1,0 +1,25 @@
+.allUsers h1{
+    margin: 15px 10px 5px 20px;
+}
+
+.userList{
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.avatar{
+    height: 40px;
+    width: auto;
+    float: left;
+    filter: grayscale(100%);
+}
+
+.message{
+    display: inline-block;
+    padding: 15px 25px;
+    margin-left: 10px;
+    background-color: #f2fafa;
+    line-height: 30px;
+    border-radius: 10px;
+    max-width: calc(100% - 100px);
+}

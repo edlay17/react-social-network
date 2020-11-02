@@ -1,0 +1,46 @@
+.userListItem{
+    margin: 0px 20px;
+    padding: 15px;
+    border-bottom: 1px solid #bed9db;
+}
+
+.avatar{
+    float: left;
+}
+
+.avatar img{
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.userInfo{
+    display: inline-block;
+    padding: 15px 45px;
+}
+
+.userInfo span{
+    line-height: 30px;
+}
+
+.buttonArea{
+    display: flex;
+}
+
+.buttonArea button{
+    margin: auto;
+}
+
+.name{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.userPanel{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
