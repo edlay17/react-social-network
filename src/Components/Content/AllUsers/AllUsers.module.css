@@ -23,3 +23,8 @@
     border-radius: 10px;
     max-width: calc(100% - 100px);
 }
+
+.showMoreButtonArea{
+    text-align: center;
+    padding-bottom: 15px;
+}
