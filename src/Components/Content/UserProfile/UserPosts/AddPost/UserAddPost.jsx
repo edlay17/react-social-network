@@ -9,7 +9,7 @@ function UserAddPost(props) {
     }
     let onTextareaChange = () => {
         let text = newPostElement.current.value;
-        props.textareaChange(text);
+        props.postTextareaChange(text);
     }
 
     return (

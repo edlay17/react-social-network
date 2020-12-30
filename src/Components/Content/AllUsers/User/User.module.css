@@ -20,6 +20,11 @@
     padding: 0px 45px;
 }
 
+.userInfo a{
+    color: black;
+    text-decoration: none;
+}
+
 .userInfo span{
     line-height: 30px;
 }
@@ -53,4 +58,8 @@
 .unSub:hover{
     background-color: #dff9fb;
     border: 1px solid #dff9fb;
+}
+
+.buttonArea button:disabled{
+    background-color: #efefef;
 }

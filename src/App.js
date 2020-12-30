@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Footer from "./Components/Footer/Footer";
 import Dialogs from "./Components/Content/Dialogs/Dialogs";
@@ -10,14 +10,16 @@ import {BrowserRouter, Route} from "react-router-dom";
 import UserProfileContainer from "./Components/Content/UserProfile/UserProfileContainer";
 import AllUsersContainer from "./Components/Content/AllUsers/AllUsersContainer";
 
+
 function App(props) {
   return (
           <div className='wrapper'>
-            <Header header={props.state.header}/>
+            <HeaderContainer store={props.store}/>
             <div className='content'>
                 <Sidebar sidebar={props.state.sidebar}/>
                 <div className='mainContent'>
-                    <Route exact path="/profile" render={ () => <UserProfileContainer store={props.store}/> }/>
+                    <Route path="/profile/:userId" render={ () => <UserProfileContainer store={props.store}/> }/>
+                    <Route exact path="/profile/" render={ () => <UserProfileContainer store={props.store}/> }/>
                     <Route path="/dialogs" render={ () => <Dialogs messages={props.state.messages} store={props.store}/> }/>
                     <Route path="/users" render={ () => <AllUsersContainer store={props.store}/> }/>
                     <Route path="/news" render={ () => <News/> }/>

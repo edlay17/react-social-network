@@ -1,26 +1,52 @@
+import {UsersAPI} from "../api/api";
+
 const CHANGE_POST_TEXTAREA = 'changePostTextarea';
 const ADD_POST = 'addPost';
+const SET_PROFILE = 'setProfile';
+const TOGGLE_IS_FETCHING = 'toggleIsFetching';
+const SET_CURRENT_PROFILE_ID = 'setCurrentProfileId';
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-export const postTextareaChangeActionCreator = (text) => ({
+export const addPost = () => ({ type: ADD_POST })
+export const postTextareaChange = (text) => ({
     type: CHANGE_POST_TEXTAREA,
     text: text
 })
+export const setProfile = (profileData) => ({
+    type: SET_PROFILE,
+    profileData
+})
+export const toggleIsFetching = (isFetching) =>({
+    type: TOGGLE_IS_FETCHING,
+    isFetching
+})
+export const setCurrentProfileId = (id) =>({
+    type: SET_CURRENT_PROFILE_ID,
+    id
+})
+export const getProfile = (userId) => (dispatch) => {
+    dispatch(setCurrentProfileId(userId));
+    dispatch(toggleIsFetching(true));
+    UsersAPI.getProfile(userId).then(data=>{
+        dispatch(toggleIsFetching(false));
+        dispatch(setProfile(data));
+    })
+}
 
 let InitialState = {
-    profileName: 'Ivan Ivanov',
-    profileAvatar: 'https://uploads.hb.cldmail.ru/geekbrains/public/ckeditor_assets/pictures/6933/content-dc09a3cb592ac82b7ce0522a7e7eb882.png',
-    profileHeader: 'https://www.paragyte.com/img/React_Banner.png',
-    profileInfoData: [
-        {id: 1, descItemName:'Exp', descItem:'HTML, CSS, JS, ReactJs, VueJs, PHP, Wordpress, SQL, GIT.'},
-        {id: 2, descItemName:'Last visit', descItem:'11:09 01.01.1970'}
-    ],
+    profileData: {
+        contacts: {
+        },
+        photos: {
+        }
+    },
+    isFetching: false,
     newPostText: '',
     postData: [
-        {id: 1, message:'hello, how are you?', likesCount: 27},
-        {id: 2, message:'hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you? hello, how are you?', likesCount: 27},
-        {id: 3, message:'hello, how are you m?', likesCount: 54}
-    ]
+        {id: 1, message:'i love react so much', likesCount: 27},
+        {id: 2, message:'learning react is very interesting', likesCount: 27},
+        {id: 3, message:'Simplicity is the key to reliability.', likesCount: 54}
+    ],
+    currentUserId: null
 }
 
 export const profileReducer = (state = InitialState, action) => {
@@ -40,9 +66,15 @@ export const profileReducer = (state = InitialState, action) => {
             stateCopy.newPostText = '';
         }
     }
+    else if(action.type === SET_PROFILE){
+        stateCopy.profileData = {...action.profileData, contacts: {...action.profileData.contacts}, photos: {...action.profileData.photos}};
+    }
+    else if(action.type === TOGGLE_IS_FETCHING){
+        stateCopy.isFetching = action.isFetching;
+    }
+    else if(action.type === SET_CURRENT_PROFILE_ID){
+        stateCopy.currentUserId = action.id;
+    }
     return stateCopy;
 }
-
-
-
 export default profileReducer;

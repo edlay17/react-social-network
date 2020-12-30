@@ -22,3 +22,18 @@ aside ul li a:hover{
     transition-timing-function: ease-out;
     transition-duration: .3s;
 }
+
+.noneDisplay{
+    display: none;
+}
+
+@media screen and (max-width: 750px) {
+    .desktop {
+        display: none;
+    }
+}
+@media screen and (min-width: 751px) {
+    .mobile {
+        display: none;
+    }
+}

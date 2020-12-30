@@ -7,7 +7,7 @@ function Sidebar(props) {
 
     return (
         <aside>
-            <SidebarMenu menuItems={props.sidebar.sidebarMenu}/>
+            <SidebarMenu menuItems={props.sidebar.sidebarMenu} isDisplayMobileMenu={props.sidebar.isDisplayMobileMenu}/>
         </aside>
     );
 }

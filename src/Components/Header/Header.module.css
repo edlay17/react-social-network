@@ -20,6 +20,14 @@ header img{
     display: none;
 }
 
+.login a{
+    padding: 25px;
+    line-height: 30px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
 @media screen and (max-width: 1240px) {
     header{
         margin-bottom: 0;
