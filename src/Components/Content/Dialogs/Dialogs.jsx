@@ -1,7 +1,8 @@
 import React from "react"
 import s from "./Dialogs.module.css"
 import Contacts from "./Contacts/Contacts";
-import MessagesContainer from "./Messages/MessagesContainer";
+import Messages from "./Messages/Messages";
+import Redirect from "react-router-dom/es/Redirect";
 
 
 function Dialogs(props) {
@@ -9,8 +10,8 @@ function Dialogs(props) {
         <div className={s.dialogs}>
             <h1>Dialogs</h1>
             <div className={s.content}>
-                <Contacts contacts={props.messages.contactsData}/>
-                <MessagesContainer store={props.store}/>
+                <Contacts contacts={props.contactsData}/>
+                <Messages messagesData={props.messagesData} messageTextAreaChanged={props.messageTextAreaChanged} addMessage={props.addMessage} newMessageText={props.newMessageText}/>
             </div>
         </div>
     );

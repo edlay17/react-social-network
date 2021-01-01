@@ -10,6 +10,8 @@ import {
     setUnsubscribe
 } from "../../../redux/usersReducer";
 import Preloader from '../../Common/Preloader'
+import withAuthRedirect from "../../HOK/withAuthRedirect"
+import {compose} from "redux";
 
 
 class AllUsersAPIContainer extends React.Component{
@@ -50,6 +52,7 @@ class AllUsersAPIContainer extends React.Component{
     }
 }
 
+
 const mapStateToProps = (state) => {
     return{
         usersData: state.users.usersData,
@@ -57,16 +60,25 @@ const mapStateToProps = (state) => {
         page: state.users.page,
         pageSize: state.users.pageSize,
         isFetching: state.users.isFetching,
-        isInProgress: state.users.followingInProgress
+        isInProgress: state.users.followingInProgress,
     }
 }
 
-const AllUsersContainer = connect(mapStateToProps, {
-    showMore,
-    setUsers,
-    addUsers,
-    getUsers,
-    setSubscribe,
-    setUnsubscribe
-})(AllUsersAPIContainer);
-export default AllUsersContainer;
+const mapStateToPropsForLoginRedirect = (state) => {
+    return{
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, {
+        showMore,
+        setUsers,
+        addUsers,
+        getUsers,
+        setSubscribe,
+        setUnsubscribe
+    }),
+    connect(mapStateToPropsForLoginRedirect),
+    withAuthRedirect
+)(AllUsersAPIContainer);

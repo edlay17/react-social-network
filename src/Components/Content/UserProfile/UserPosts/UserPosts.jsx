@@ -8,7 +8,7 @@ function UserPosts(props) {
     let postDataConvert = postData.map((post) => <UserPost profileAvatar={props.profileAvatar} message={post.message} likesCount={post.likesCount} key={post.id}/>)
     return (
         <div>
-            {(props.isAuth && props.authId === props.profileId) && <UserAddPost addPost={props.addPost} postTextareaChange={props.postTextareaChange} newPostText={props.newPostText}/>}
+            {(props.authId === props.profileId) && <UserAddPost addPost={props.addPost} postTextareaChange={props.postTextareaChange} newPostText={props.newPostText}/>}
             <div className={s.posts}>
                 {postDataConvert.reverse()}
             </div>

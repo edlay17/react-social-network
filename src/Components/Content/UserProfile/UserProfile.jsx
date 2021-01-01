@@ -11,7 +11,7 @@ function UserProfile(props) {
             {props.isFetching && <Preloader/>}
             <UserHeader profileHeader={props.profileData.photos.large}/>
             <UserInfo profileInfoData={props.profileData.aboutMe} profileAvatar={props.profileData.photos.small} profileName={props.profileData.fullName} profileContacts={props.profileData.contacts}/>
-            <UserPosts isAuth={props.isAuth} authId={props.authId} profileId={props.profileId} postData={props.postData} profileAvatar={props.profileData.photos.small} addPost={props.addPost} newPostText={props.newPostText} postTextareaChange={props.postTextareaChange}/>
+            <UserPosts authId={props.authId} profileId={props.profileId} postData={props.postData} profileAvatar={props.profileData.photos.small} addPost={props.addPost} newPostText={props.newPostText} postTextareaChange={props.postTextareaChange}/>
         </div>
     );
 }

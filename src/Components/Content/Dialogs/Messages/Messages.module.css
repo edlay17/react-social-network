@@ -13,3 +13,9 @@
 .button{
     text-align: right;
 }
+
+.messages{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 60vh;
+}
