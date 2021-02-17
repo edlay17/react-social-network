@@ -1,0 +1,26 @@
+.status, .canChangeStatus{
+    margin: 10px 20px;
+}
+.status span, .canChangeStatus span{
+    padding: 5px 10px;
+}
+.canChangeStatus span:hover{
+    background-color: #f2fafa;
+}
+
+.changeStatus:focus{
+    border: 1px solid #d8e5e5;
+    border-radius: 5px;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.status input{
+    width: 100%;
+}
+
+span.error{
+    color: red;
+    margin: 10px 20px;
+    padding: 5px 10px;
+}

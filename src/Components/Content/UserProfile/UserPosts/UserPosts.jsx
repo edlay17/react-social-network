@@ -4,7 +4,9 @@ import UserPost from "./Post/UserPost";
 import UserAddPost from "./AddPost/UserAddPost";
 
 function UserPosts(props) {
-    let postData = props.postData;
+    let postData;
+    if(props.authId === props.profileId)postData = props.myPostData;
+    else postData = props.postData;
     let postDataConvert = postData.map((post) => <UserPost profileAvatar={props.profileAvatar} message={post.message} likesCount={post.likesCount} key={post.id}/>)
     return (
         <div>

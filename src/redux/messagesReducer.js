@@ -1,14 +1,11 @@
-const CHANGE_MESSAGE_TEXTAREA = 'changeMessageTextarea';
 const ADD_MESSAGE = 'addMessage';
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-export const messageTextareaChangeActionCreator = (text) => ({
-    type: CHANGE_MESSAGE_TEXTAREA,
-    text: text
+export const addMessageActionCreator = (newMes) => ({
+    type: ADD_MESSAGE,
+    newMes
 })
 
 let InitialState = {
-    newMessageText: '',
     messagesData: [
         {inbox: true, text: 'hello how are you?'},
         {inbox: true, text: 'hello how are you?'},
@@ -29,17 +26,13 @@ let InitialState = {
 
 const messagesReducer = (state = InitialState, action) => {
     let stateCopy = {...state};
-    if(action.type === CHANGE_MESSAGE_TEXTAREA){
-        stateCopy.newMessageText = action.text;
-    }
-    else if(action.type === ADD_MESSAGE){
-        if(stateCopy.newMessageText != ''){
+    if(action.type === ADD_MESSAGE){
+        if(action.newMes !== ''){
             let newMessage = {
                 inbox: false,
-                text: stateCopy.newMessageText
+                text: action.newMes
             }
             stateCopy.messagesData = [...state.messagesData, newMessage];
-            stateCopy.newMessageText = '';
         }
     }
     return stateCopy;

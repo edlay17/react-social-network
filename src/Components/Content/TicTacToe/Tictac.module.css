@@ -1,0 +1,31 @@
+.block{
+    margin: 50px;
+}
+
+.wrapper{
+    margin: 15px 10px 5px 20px;
+}
+
+.cell{
+    width: 150px;
+    height: 150px;
+    background-color: #e4f2f2;
+}
+
+.row{
+    display: flex;
+    width: 450px;
+    flex-wrap: wrap;
+}
+
+.null:hover{
+    background-color: #bed9db;
+}
+
+.one{
+    background-color: darkseagreen;
+}
+
+.two{
+    background-color: indianred;
+}

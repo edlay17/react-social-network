@@ -6,6 +6,8 @@ import headerReducer from "./headerReducer";
 import footerReducer from "./footerReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
+import tictacReducer from "./tictacReducer";
+import appReducer from "./appReducer";
 import thunkMiddleware from "redux-thunk";
 
 let reducers = combineReducers({
@@ -15,7 +17,9 @@ let reducers = combineReducers({
     header: headerReducer,
     footer: footerReducer,
     users: usersReducer,
-    auth: authReducer
+    auth: authReducer,
+    tictac: tictacReducer,
+    app: appReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

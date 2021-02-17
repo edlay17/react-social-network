@@ -1,21 +1,22 @@
-import {UsersAPI} from "../api/api";
+import {ProfileAPI} from "../api/api";
 
 const CHANGE_POST_TEXTAREA = 'changePostTextarea';
 const ADD_POST = 'addPost';
 const SET_PROFILE = 'setProfile';
-const TOGGLE_IS_FETCHING = 'toggleIsFetching';
+const TOGGLE_IS_FETCHING = 'profileToggleIsFetching';
 const SET_CURRENT_PROFILE_ID = 'setCurrentProfileId';
+const SET_STATUS = 'setStatus';
 
 export const addPost = () => ({ type: ADD_POST })
 export const postTextareaChange = (text) => ({
     type: CHANGE_POST_TEXTAREA,
     text: text
 })
-export const setProfile = (profileData) => ({
+const setProfile = (profileData) => ({
     type: SET_PROFILE,
     profileData
 })
-export const toggleIsFetching = (isFetching) =>({
+export const profileToggleIsFetching = (isFetching) =>({
     type: TOGGLE_IS_FETCHING,
     isFetching
 })
@@ -23,12 +24,88 @@ export const setCurrentProfileId = (id) =>({
     type: SET_CURRENT_PROFILE_ID,
     id
 })
+const setStatus = (status) =>({
+    type: SET_STATUS,
+    status
+})
 export const getProfile = (userId) => (dispatch) => {
     dispatch(setCurrentProfileId(userId));
-    dispatch(toggleIsFetching(true));
-    UsersAPI.getProfile(userId).then(data=>{
-        dispatch(toggleIsFetching(false));
+    dispatch(profileToggleIsFetching(true));
+    ProfileAPI.getProfile(userId).then(data=>{
         dispatch(setProfile(data));
+        dispatch(profileToggleIsFetching(false));
+    })
+}
+export const getStatus = (userId) => (dispatch) => {
+    dispatch(profileToggleIsFetching(true));
+    ProfileAPI.getStatus(userId).then(data=>{
+        dispatch(setStatus(data));
+        dispatch(profileToggleIsFetching(false));
+    })
+}
+export const changeStatus = (status, setError, toggleShowErrorMessage) => (dispatch) => {
+    dispatch(profileToggleIsFetching(true));
+    ProfileAPI.setStatus(status).then(data=>{
+        if(data.resultCode === 0){
+            dispatch(setStatus(status));
+            dispatch(profileToggleIsFetching(false));
+        }
+        else{
+            toggleShowErrorMessage(true);
+            setError(data.messages);
+            dispatch(profileToggleIsFetching(false));
+        }
+    })
+}
+export const changeProfileData = (github, twitter, instagram, profileId, setError, changeIsReturnErrors) => (dispatch, getState) => {
+    dispatch(profileToggleIsFetching(true));
+    let profileData = getState().profile.profileData;
+    let aboutMe = profileData.aboutMe;
+    let lookingForAJob = profileData.lookingForAJob;
+    let lookingForAJobDescription = profileData.lookingForAJobDescription;
+    let fullName = profileData.fullName;
+    ProfileAPI.setProfileData(aboutMe,lookingForAJob,lookingForAJobDescription,fullName,github,instagram,twitter).then(data=>{
+        if(data.resultCode === 0){
+            dispatch(getProfile(profileId));
+            changeIsReturnErrors(false);
+            dispatch(profileToggleIsFetching(false));
+        }
+        else{
+            setError(data.messages);
+            changeIsReturnErrors(true);
+            dispatch(profileToggleIsFetching(false));
+        }
+    })
+}
+
+export const changeProfileName = (name, profileId, setError, isReturnError) => (dispatch, getState) => {
+    dispatch(profileToggleIsFetching(true));
+    let profileData = getState().profile.profileData;
+    let aboutMe = profileData.aboutMe;
+    let lookingForAJob = profileData.lookingForAJob;
+    let lookingForAJobDescription = profileData.lookingForAJobDescription;
+    let github = profileData.contacts.github;
+    let twitter = profileData.contacts.twitter;
+    let instagram = profileData.contacts.instagram;
+
+    if(!aboutMe) aboutMe = "about me";
+    if(!lookingForAJobDescription) lookingForAJobDescription = "looking great job";
+    if(!github) github = "github.com";
+    if(!twitter) twitter = "twitter.com";
+    if(!instagram) instagram = "instagram.com";
+
+    let fullName = name;
+    ProfileAPI.setProfileData(aboutMe,lookingForAJob,lookingForAJobDescription,fullName,github,instagram,twitter).then(data=>{
+        if(data.resultCode === 0){
+            isReturnError(false);
+            dispatch(getProfile(profileId));
+            dispatch(profileToggleIsFetching(false));
+        }
+        else{
+            setError(data.messages);
+            isReturnError(true);
+            dispatch(profileToggleIsFetching(false));
+        }
     })
 }
 
@@ -46,7 +123,13 @@ let InitialState = {
         {id: 2, message:'learning react is very interesting', likesCount: 27},
         {id: 3, message:'Simplicity is the key to reliability.', likesCount: 54}
     ],
-    currentUserId: null
+    myPostData: [
+        {id: 1, message:'i love react so much', likesCount: 27},
+        {id: 2, message:'learning react is very interesting', likesCount: 27},
+        {id: 3, message:'Simplicity is the key to reliability.', likesCount: 54}
+    ],
+    currentUserId: null,
+    status: ""
 }
 
 export const profileReducer = (state = InitialState, action) => {
@@ -62,7 +145,7 @@ export const profileReducer = (state = InitialState, action) => {
                 likesCount: 0,
             }
 
-            stateCopy.postData = [...state.postData, newPost];
+            stateCopy.myPostData = [...state.myPostData, newPost];
             stateCopy.newPostText = '';
         }
     }
@@ -74,6 +157,9 @@ export const profileReducer = (state = InitialState, action) => {
     }
     else if(action.type === SET_CURRENT_PROFILE_ID){
         stateCopy.currentUserId = action.id;
+    }
+    else if(action.type === SET_STATUS){
+        stateCopy.status = action.status;
     }
     return stateCopy;
 }

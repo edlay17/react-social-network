@@ -1,7 +1,6 @@
 header{
     height: 80px;
     margin-bottom: 30px;
-    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,5 +49,8 @@ header img{
         height: 7px;
         background-color: #90a7ac;
         border-radius: 4px;
+    }
+    .login{
+        display: none;
     }
 }

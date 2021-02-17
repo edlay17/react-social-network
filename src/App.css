@@ -1,5 +1,6 @@
 body{
-  background-color: #f7f8fa;
+  /*background-color: #f7f8fa;*/
+    background-color: white;
 }
 
 form, textarea, button, input{

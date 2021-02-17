@@ -18,6 +18,7 @@
 .userInfo{
     display: inline-block;
     padding: 0px 45px;
+    max-width: 70%;
 }
 
 .userInfo a{
@@ -35,6 +36,13 @@
 
 .buttonArea button{
     margin: auto;
+}
+
+.buttonArea span{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
 }
 
 .name{

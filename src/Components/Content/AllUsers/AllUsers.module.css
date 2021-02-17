@@ -32,3 +32,11 @@
 .selectPage{
     font-weight: bold;
 }
+
+.selectCount{
+    margin-left: 25px;
+    padding: 2px 5px;
+    border: 1px solid #cccbd7;
+    border-radius: 10px;
+    background-color: #f6feff;
+}

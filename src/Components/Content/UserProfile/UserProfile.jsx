@@ -10,8 +10,8 @@ function UserProfile(props) {
         <div>
             {props.isFetching && <Preloader/>}
             <UserHeader profileHeader={props.profileData.photos.large}/>
-            <UserInfo profileInfoData={props.profileData.aboutMe} profileAvatar={props.profileData.photos.small} profileName={props.profileData.fullName} profileContacts={props.profileData.contacts}/>
-            <UserPosts authId={props.authId} profileId={props.profileId} postData={props.postData} profileAvatar={props.profileData.photos.small} addPost={props.addPost} newPostText={props.newPostText} postTextareaChange={props.postTextareaChange}/>
+            <UserInfo changeProfileName={props.changeProfileName} changeProfileData={props.changeProfileData} authId={props.authId} profileId={props.profileId} status={props.status} changeStatus={props.changeStatus} profileAvatar={props.profileData.photos.small} profileName={props.profileData.fullName} profileContacts={props.profileData.contacts}/>
+            <UserPosts authId={props.authId} profileId={props.profileId} myPostData={props.myPostData} postData={props.postData} profileAvatar={props.profileData.photos.small} addPost={props.addPost} newPostText={props.newPostText} postTextareaChange={props.postTextareaChange}/>
         </div>
     );
 }

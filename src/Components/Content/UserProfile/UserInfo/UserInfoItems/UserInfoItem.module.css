@@ -1,0 +1,9 @@
+.info:hover{
+    background-color: #f2fafa;
+}
+.changeData li{
+    margin-bottom: 5px;
+}
+.changeData input{
+    margin-left: 5px;
+}

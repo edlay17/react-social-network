@@ -10,13 +10,13 @@ function Header(props) {
 
     return (
         <header>
-            <img src={reactLogo}/>
+            <img onClick={onClickMenu} src={reactLogo}/>
             <div onClick={onClickMenu} className={s.menu}>
                     <span onClick={onClickMenu} className={s.hamburgerLine}></span>
                     <span className={s.hamburgerLine}></span>
                     <span className={s.hamburgerLine}></span>
             </div>
-            <div className={s.login}>{props.isFetching ? <Preloader/> : ''}<a href={'/'}>{props.isAuth ? `hello, ${props.login}` : 'login'}</a></div>
+            <div className={s.login}>{props.isFetching && <Preloader/>}<a>{props.isAuth ? `hello, ${props.login}` : 'login'}</a></div>
 
         </header>
     );

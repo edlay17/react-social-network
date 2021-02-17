@@ -1,6 +1,6 @@
 import React from "react"
-import * as axios from "axios";
 import {connect} from "react-redux";
+import {compose} from "redux";
 import {authMe} from "../../../src/redux/authReducer";
 import {withRouter} from "react-router-dom";
 import Header from "./Header";
@@ -8,9 +8,6 @@ import {toggleDisplayMobileMenu} from "../../redux/sidebarReducer";
 
 class HeaderAPIContainer extends React.Component{
 
-    componentDidMount() {
-        this.props.authMe();
-    }
     render(){
         return (
             <div>
@@ -31,10 +28,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-let WithUrlDataContainerComponent = withRouter(HeaderAPIContainer);
-
-const HeaderContainer = connect(mapStateToProps, {
-    toggleDisplayMobileMenu,
-    authMe
-})(WithUrlDataContainerComponent);
-export default HeaderContainer;
+export default compose(
+    connect(mapStateToProps, {
+        toggleDisplayMobileMenu,
+        authMe
+    }),
+    withRouter,
+)(HeaderAPIContainer);

@@ -2,10 +2,11 @@
     text-align: right;
 }
 
-h3{
+.addPost h3{
     margin-left: 20px;
     margin-bottom: 0;
     text-align: left;
+    padding-left: 10px;
 }
 
 .addPost textarea {
@@ -21,5 +22,9 @@ h3{
 }
 
 .button:hover{
-    padding: 8px 29px;
+    /*padding: 8px 29px;*/
+}
+
+.error{
+    color: red;
 }

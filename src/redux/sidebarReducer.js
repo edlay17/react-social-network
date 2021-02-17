@@ -9,10 +9,9 @@ let InitialState = {
     sidebarMenu: [
         {id: 1, name: 'Profile', route: '/profile', isExact: true},
         {id: 2, name: 'Messages', route: '/dialogs', isExact: false},
-        {id: 6, name: 'Users', route: '/users', isExact: false},
-        {id: 3, name: 'News', route: '/news', isExact: false},
-        {id: 4, name: 'Settings', route: '/settings', isExact: false},
-        {id: 5, name: 'test', route: '/test', isExact: false},
+        {id: 3, name: 'Users', route: '/users', isExact: true},
+        {id: 4, name: 'Login', route: '/login', isExact: true},
+        {id: 5, name: 'TicTac', route: '/tictac', isExact: true},
     ],
     isDisplayMobileMenu: false
 }

@@ -1,61 +1,59 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AllUsersFunc from './AllUsersFunc';
 import {connect} from 'react-redux';
 import {
     setUsers,
-    showMore,
     addUsers,
     getUsers,
     setSubscribe,
-    setUnsubscribe
+    setUnsubscribe,
+    setCountUsersOnPage
 } from "../../../redux/usersReducer";
 import Preloader from '../../Common/Preloader'
-import withAuthRedirect from "../../HOK/withAuthRedirect"
 import {compose} from "redux";
+import {getUsersSuperSelector} from "../../../redux/usersSelectors";
 
 
-class AllUsersAPIContainer extends React.Component{
+function AllUsersAPIContainer(props){
+    useEffect(() => {
+        props.getUsers(1,1, "SET", props.pageSize);
+    }, []);
 
-    componentDidMount() {
-        if(this.props.usersData.length === 0 || this.props.page !== 1){
-           this.props.getUsers(1,1, "SET");
-        }
+    let showMore = () => {
+        props.getUsers(props.page+1, props.page+1, "ADD", props.pageSize)
+    }
+    let showPage = (pageNum) => {
+        props.getUsers(pageNum, pageNum, "SET", props.pageSize);
     }
 
-    showMore = () => {
-        this.props.getUsers(this.props.page+1, this.props.page+1, "ADD")
+    let usersPageCount = () => {
+        return Math.ceil(props.totalCount / props.pageSize);
     }
-
-    showPage = (pageNum) => {
-        this.props.getUsers(pageNum,pageNum, "SET");
-    }
-
-    usersPageCount = () => {
-        return Math.ceil(this.props.totalCount / this.props.pageSize);
-    }
-
-    render(){
-        return <>
-            {this.props.isFetching && <Preloader />}
-            <AllUsersFunc page={this.props.page}
-                          convertUserData={this.convertUserData}
-                          usersPageCount={this.usersPageCount}
-                          showPage={this.showPage}
-                          showMore={this.showMore}
-                          usersData={this.props.usersData}
-                          isFetching={this.props.isFetching}
-                          isInProgress={this.props.isInProgress}
-                          setSubscribe={this.props.setSubscribe}
-                          setUnsubscribe={this.props.setUnsubscribe}
-            />
+    return (
+        <>
+        <AllUsersFunc page={props.page}
+                      pageSize={props.pageSize}
+                      usersPageCount={usersPageCount}
+                      showPage={showPage}
+                      showMore={showMore}
+                      usersData={props.usersData}
+                      isFetching={props.isFetching}
+                      isInProgress={props.isInProgress}
+                      setSubscribe={props.setSubscribe}
+                      setUnsubscribe={props.setUnsubscribe}
+                      isAuth={props.isAuth}
+                      setCountUsersOnPage={props.setCountUsersOnPage}
+                      authId={props.authId}
+        />
+        {props.isFetching && <Preloader />}
         </>
-    }
+    );
 }
 
 
 const mapStateToProps = (state) => {
     return{
-        usersData: state.users.usersData,
+        usersData: getUsersSuperSelector(state),
         totalCount: state.users.totalCount,
         page: state.users.page,
         pageSize: state.users.pageSize,
@@ -66,19 +64,19 @@ const mapStateToProps = (state) => {
 
 const mapStateToPropsForLoginRedirect = (state) => {
     return{
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        authId: state.auth.userId
     }
 }
 
 export default compose(
     connect(mapStateToProps, {
-        showMore,
         setUsers,
         addUsers,
         getUsers,
         setSubscribe,
-        setUnsubscribe
+        setUnsubscribe,
+        setCountUsersOnPage
     }),
     connect(mapStateToPropsForLoginRedirect),
-    withAuthRedirect
 )(AllUsersAPIContainer);

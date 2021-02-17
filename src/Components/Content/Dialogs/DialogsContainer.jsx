@@ -1,5 +1,5 @@
 import React from "react"
-import {messageTextareaChangeActionCreator, addMessageActionCreator} from "../../../redux/messagesReducer";
+import {addMessageActionCreator} from "../../../redux/messagesReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {compose} from "redux";
@@ -21,11 +21,8 @@ const mapStateToPropsForLoginRedirect = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator());
-        },
-        messageTextAreaChanged: (text) => {
-            dispatch(messageTextareaChangeActionCreator(text));
+        addMessage: (newMes) => {
+            dispatch(addMessageActionCreator(newMes));
         }
     }
 }

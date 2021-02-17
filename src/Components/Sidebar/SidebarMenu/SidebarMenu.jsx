@@ -16,7 +16,7 @@ function SidebarMenu(props) {
                 {sidebarMenu}
             </ul>
         </nav>
-        <nav className={`${s.mobile} ${props.isDisplayMobileMenu ? '' : s.noneDisplay}`}>
+        <nav className={`${s.mobile} ${!props.isDisplayMobileMenu && s.noneDisplay}`}>
             <ul>
                 {sidebarMenu}
             </ul>

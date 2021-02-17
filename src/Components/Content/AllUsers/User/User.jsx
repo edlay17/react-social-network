@@ -23,10 +23,12 @@ function User(props) {
                         <span className={s.name}>{props.name}</span><br/>
                     </NavLink>
                     <span>Status: {props.status != null ? props.status : 'none'}</span><br/>
-                    <span>Last visit: {props.lastVisit != null ? props.lastVisit : 'none'}</span><br/>
+                    <span>ID: {props.id != null ? props.id : 'none'}</span><br/>
                 </div>
                 <div className={s.buttonArea}>
-                    <button disabled={props.isInProgress.some(id => id === props.id)} className={props.sub && s.unSub} onClick={props.sub ? onUnSubscribe : onSubscribe}>{props.sub ? 'Unsubscribe' : 'Subscribe'}</button>
+                    {(props.id === props.authId) ? <span>It's you</span> :
+                        <button disabled={(props.isInProgress.some(id => id === props.id) || (!props.isAuth))} className={props.sub && s.unSub}
+                                onClick={props.sub ? onUnSubscribe : onSubscribe}>{props.sub ? 'Unsubscribe' : 'Subscribe'}</button>}
                 </div>
             </div>
         </div>
